@@ -3,8 +3,9 @@
 namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Category;
 use App\Models\Aukstructure;
+use App\Models\Category;
+use App\Models\Course;
 
 class CourseFilter extends AbstractFilter
 {
@@ -12,6 +13,8 @@ class CourseFilter extends AbstractFilter
     public const PATH = 'path';
     public const AIRCRAFT_ID = 'aircraft_id';
     public const CATEGORY_ID = 'category_id';
+    public const PARENT_ID = 'parent_id';
+    public const TYPE_ID = 'type_id';
     public const COURSE_ID = 'course_id';
 
     protected function getCallbacks(): array
@@ -21,6 +24,8 @@ class CourseFilter extends AbstractFilter
             self::PATH => [$this, 'path'],
             self::AIRCRAFT_ID => [$this, 'aircraftId'],
             self::CATEGORY_ID => [$this, 'categoryId'],
+            self::PARENT_ID => [$this, 'parentId'],
+            self::TYPE_ID => [$this, 'typeId'],
             self::COURSE_ID => [$this, 'courseId'],
         ];
     }
@@ -64,6 +69,20 @@ class CourseFilter extends AbstractFilter
         $builder->with(['aukstructures', 'categories']);
     }
 
+    public function parentId(Builder $builder, $value)
+    {
+        $builder->withWhereHas('aukstructures', function ($q) use ($value) {
+            $q->where('parent_id', $value);
+        });
+    }
+
+    public function typeId(Builder $builder, $value)
+    {
+        $builder->withWhereHas('aukstructures', function ($q) use ($value) {
+            $q->where('type', $value);
+        });
+    }
+
     public function courseId(Builder $builder, $value)
     {
         $course = Course::where('id', $value)->first();
@@ -71,7 +90,6 @@ class CourseFilter extends AbstractFilter
         if ($course) {
             $builder->where('id', $course->id)->with('aukstructures');
         } else {
-            // Try to find by aukstructure id
             $aukstructure = Aukstructure::find($value);
             if ($aukstructure) {
                 $builder->where('id', $aukstructure->course_id)

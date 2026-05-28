@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum')->except(['index', 'show']);
-    }
-
     public function index(Request $request)
     {
-        $categories = Category::with('courses')->paginate(15);
+        $query = Category::with('courses');
+
+        if ($request->has('aircraft_id')) {
+            $query->where('aircraft_id', $request->aircraft_id);
+        }
+
+        $categories = $query->paginate(15);
         return response()->json($categories);
     }
 
@@ -30,8 +31,12 @@ class CategoryController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'code' => 'nullable|string|max:50',
-            'aircraft_id' => 'nullable|exists:aircrafts,id',
+            'aircraft_id' => 'required|exists:aircrafts,id',
         ]);
+
+        if (!isset($validated['code']) || !$validated['code']) {
+            $validated['code'] = strtoupper(substr(md5($validated['title'] . time()), 0, 8));
+        }
 
         $category = Category::create($validated);
         return response()->json($category, 201);

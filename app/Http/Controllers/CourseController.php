@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum')->except(['index', 'show']);
-    }
-
     public function index(Request $request)
     {
         $filter = new CourseFilter($request->query());
@@ -96,5 +91,26 @@ class CourseController extends Controller
         $course->delete();
         
         return response()->json(null, 204);
+    }
+
+    public function getFirstAuk($auk_id)
+    {
+        $cur_course_id = Aukstructure::find($auk_id)->course_id;
+        $firstAukId = Aukstructure::where([
+            ['course_id', '=', $cur_course_id],
+            ['type', '=', 3],
+            ['id', '>=', $auk_id]
+        ])->orderBy('id')->first();
+
+        return $firstAukId;
+    }
+
+    public function showManifest($id)
+    {
+        $course = Course::find($id);
+        $course->categories;
+        $course->aircraft;
+
+        return response()->json($course);
     }
 }

@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'courses_path' => env('COURSES_PATH', storage_path('app/private/')),
+    'private_path' => env('PRIVATE_PATH', 'api/private/'),
+
 ];

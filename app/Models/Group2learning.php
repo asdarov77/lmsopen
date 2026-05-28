@@ -1,12 +1,21 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
 
 class Group2learning extends Model
 {
+    use Filterable, HasFactory;
+
+
     protected $fillable = [
         'group_id',
         'category_id',

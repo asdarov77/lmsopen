@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Aukstructure extends Model
 {
+    use Filterable;
+
     protected $fillable = [
         'course_id',
         'parent_id',

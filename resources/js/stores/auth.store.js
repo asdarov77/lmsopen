@@ -15,7 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
   const hasPermission = computed(() => {
     return (slug) => {
       if (!user.value?.permissions) return false;
-      return user.value.permissions.some(p => p.slug === slug || p.name === slug);
+      return user.value.permissions.some(p => p.description === slug || p.slug === slug || p.name === slug);
     };
   });
 
@@ -32,7 +32,8 @@ export const useAuthStore = defineStore('auth', () => {
     
     try {
       const response = await authService.login(credentials);
-      const { token, user: userData, permissions } = response.data;
+      const body = response.data.data || response.data;
+      const { token, user: userData, permissions } = body;
       
       accessToken.value = token;
       user.value = { ...userData, permissions };
@@ -42,7 +43,7 @@ export const useAuthStore = defineStore('auth', () => {
       
       return response;
     } catch (err) {
-      error.value = err.response?.data?.message || 'Ошибка входа';
+      error.value = err.response?.data?.error || err.response?.data?.message || 'Ошибка входа';
       throw err;
     } finally {
       isLoading.value = false;

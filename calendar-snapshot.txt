@@ -1,0 +1,47 @@
+uid=23_0 RootWebArea "Laravel" url="http://localhost:8000/#/calendar"
+  uid=23_1 banner
+    uid=23_2 button
+    uid=23_3 link "LMS - Система управления обучением" url="http://localhost:8000/#/"
+      uid=23_4 StaticText "LMS - Система управления обучением"
+    uid=23_5 button "АДМИНИСТРАТОР" expandable haspopup="menu"
+  uid=23_6 navigation
+    uid=23_7 listbox orientation="vertical"
+      uid=23_8 link "Главная" url="http://localhost:8000/#/"
+      uid=23_9 link "Курсы" url="http://localhost:8000/#/courses"
+      uid=23_10 link "Категории" url="http://localhost:8000/#/categories"
+      uid=23_11 generic
+      uid=23_12 generic
+      uid=23_13 link "Календарь" url="http://localhost:8000/#/calendar"
+      uid=23_14 generic
+      uid=23_15 generic
+      uid=23_16 generic
+      uid=23_17 link "Моё обучение" url="http://localhost:8000/#/user/learning"
+      uid=23_18 link "Контакты" url="http://localhost:8000/#/contacts"
+      uid=23_19 generic
+  uid=23_20 main
+    uid=23_21 heading "Календарь" level="1"
+    uid=23_22 StaticText "Название события"
+    uid=23_23 textbox "Название события"
+    uid=23_24 Date
+      uid=23_25 spinbutton "День День" value="0" valuemax="31" valuemin="1" valuetext=""
+      uid=23_26 StaticText "."
+      uid=23_27 spinbutton "Месяц Месяц" value="0" valuemax="12" valuemin="1" valuetext=""
+      uid=23_28 StaticText "."
+      uid=23_29 spinbutton "Год Год" value="0" valuemax="275760" valuemin="1" valuetext=""
+      uid=23_30 button "Показать окно выбора даты" haspopup="menu"
+    uid=23_31 Date
+      uid=23_32 spinbutton "День День" value="0" valuemax="31" valuemin="1" valuetext=""
+      uid=23_33 StaticText "."
+      uid=23_34 spinbutton "Месяц Месяц" value="0" valuemax="12" valuemin="1" valuetext=""
+      uid=23_35 StaticText "."
+      uid=23_36 spinbutton "Год Год" value="0" valuemax="275760" valuemin="1" valuetext=""
+      uid=23_37 button "Показать окно выбора даты" haspopup="menu"
+    uid=23_38 button "ДОБАВИТЬ СОБЫТИЕ"
+    uid=23_39 StaticText "Ближайшие события (0)"
+    uid=23_40 listbox orientation="vertical"
+    uid=23_41 alert atomic live="assertive" relevant="additions text"
+      uid=23_42 StaticText "Выберите дату для создания события"
+  uid=23_43 contentinfo
+    uid=23_44 StaticText "© 2023 Dinamika"
+    uid=23_45 button "ENG"
+    uid=23_46 button "RUS"

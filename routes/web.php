@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SinglePageController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{any?}', [SinglePageController::class, 'index'])
+    ->where('any', '.*');

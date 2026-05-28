@@ -2,13 +2,15 @@
 
 namespace App\Traits;
 
-use App\Http\Filters\AbstractFilter;
+use App\Http\Filters\FilterInterface;
 use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable
 {
-    public function scopeFilter(Builder $query, AbstractFilter $filter)
+    public function scopeFilter(Builder $builder, FilterInterface $filter)
     {
-        return $filter->apply($query);
+        $filter->apply($builder);
+
+        return $builder;
     }
 }

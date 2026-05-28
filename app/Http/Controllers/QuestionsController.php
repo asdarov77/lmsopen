@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum');
-    }
-
     public function index(Request $request)
     {
         $filter = new QuestionFilter($request->query());

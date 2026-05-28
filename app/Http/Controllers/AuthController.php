@@ -12,11 +12,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum')->except(['login', 'register']);
-    }
-
     public function register(Request $request)
     {
         $fields = $request->validate([
@@ -28,6 +23,8 @@ class AuthController extends Controller
 
         $user = User::create([
             'fio' => $fields['fio'],
+            'name' => $fields['fio'],
+            'email' => $fields['fio'] . '@placeholder.local',
             'password' => Hash::make($fields['password']),
             'group_id' => $request->group_id,
             'role' => $request->role ?? 'Пользователь',
@@ -50,7 +47,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken($request->fio)->plainTextToken;
-        $permissions = $user->permissions;
+        $permissions = $user->allPermissions;
 
         return response()->json([
             'user' => $user,
@@ -79,9 +76,9 @@ class AuthController extends Controller
     public function getUserList()
     {
         if (Auth::user()->role === 'Администратор') {
-            $users = User::with(['group', 'permissions'])->orderBy('id')->get();
+            $users = User::with(['group', 'permissions', 'roles'])->orderBy('id')->get();
         } else {
-            $users = User::with(['group', 'permissions'])
+            $users = User::with(['group', 'permissions', 'roles'])
                 ->where('group_id', Auth::user()->group_id)
                 ->orderBy('id')
                 ->get();
@@ -92,7 +89,7 @@ class AuthController extends Controller
 
     public function getUser($id)
     {
-        $user = User::with(['group', 'permissions'])->findOrFail($id);
+        $user = User::with(['group', 'permissions', 'roles'])->findOrFail($id);
         return response()->json($user);
     }
 
@@ -109,7 +106,27 @@ class AuthController extends Controller
             $user->permissions()->sync($request->permission_id);
         }
 
+        if ($request->has('role_id')) {
+            $user->roles()->sync($request->role_id);
+        }
+
+        $user->load(['group', 'permissions', 'roles']);
+
         return response()->json($user, 200);
+    }
+
+    public function syncRoles(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        
+        $request->validate([
+            'role_id' => 'array',
+            'role_id.*' => 'exists:roles,id',
+        ]);
+
+        $user->roles()->sync($request->role_id ?? []);
+
+        return response()->json(['message' => 'Роли синхронизированы'], 200);
     }
 
     public function chpass(Request $request, $id)

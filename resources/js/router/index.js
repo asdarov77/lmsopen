@@ -51,12 +51,6 @@ const routes = [
     path: '/groups',
     name: 'groups.list',
     component: () => import('@/pages/groups/GroupListPage.vue'),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: '/groups/create',
-    name: 'groups.create',
-    component: () => import('@/pages/groups/GroupCreatePage.vue'),
     meta: { requiresAuth: true, permission: 'manage-users' }
   },
   {
@@ -64,7 +58,7 @@ const routes = [
     name: 'groups.edit',
     component: () => import('@/pages/groups/GroupEditPage.vue'),
     props: true,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, permission: 'manage-users' }
   },
   {
     path: '/groups/:id/learning',
@@ -88,6 +82,18 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/courses/create',
+    name: 'courses.create',
+    component: () => import('@/pages/courses/CourseCreatePage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/courses/:id/edit',
+    name: 'courses.edit',
+    component: () => import('@/pages/courses/CourseEditPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
     path: '/courses/:id/manifest',
     name: 'courses.manifest',
     component: () => import('@/pages/courses/CourseManifestPage.vue'),
@@ -103,17 +109,17 @@ const routes = [
     component: () => import('@/pages/aircrafts/AircraftIndexPage.vue'),
     meta: { requiresAuth: true, permission: 'manage-users' }
   },
+  {
+    path: '/import-courses',
+    name: 'import-courses',
+    component: () => import('@/pages/import/ImportCoursesPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
   // Categories
   {
     path: '/categories',
     name: 'categories.index',
     component: () => import('@/pages/categories/CategoryListPage.vue'),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: '/categories/create',
-    name: 'categories.create',
-    component: () => import('@/pages/categories/CategoryCreatePage.vue'),
     meta: { requiresAuth: true, permission: 'manage-users' }
   },
   {
@@ -121,7 +127,20 @@ const routes = [
     name: 'categories.edit',
     component: () => import('@/pages/categories/CategoryEditPage.vue'),
     props: true,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  // RBAC
+  {
+    path: '/roles',
+    name: 'roles.index',
+    component: () => import('@/pages/rbac/RoleListPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/permissions',
+    name: 'permissions.index',
+    component: () => import('@/pages/rbac/PermissionListPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
   },
   // Questions & Tests
   {
@@ -186,6 +205,78 @@ const routes = [
     component: () => import('@/pages/user/UserCoursePage.vue'),
     props: true,
     meta: { requiresAuth: true }
+  },
+  // Calendar
+  {
+    path: '/calendar',
+    name: 'calendar',
+    component: () => import('@/pages/calendar/CalendarPage.vue'),
+    meta: { requiresAuth: true }
+  },
+  // File Manager
+  {
+    path: '/files',
+    name: 'files.index',
+    component: () => import('@/pages/files/FileManagerPage.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/files/upload',
+    name: 'files.upload',
+    component: () => import('@/pages/files/UploadFilesPage.vue'),
+    meta: { requiresAuth: true }
+  },
+  // Examine
+  {
+    path: '/examine',
+    name: 'examine.main',
+    component: () => import('@/pages/gift/ExamineMainPage.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/examine/:id',
+    name: 'examine.item',
+    component: () => import('@/pages/gift/ExamineItemPage.vue'),
+    props: true,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/questions/new/:categoryId/:aukId',
+    name: 'questions.new',
+    component: () => import('@/pages/gift/QuestionNewPage.vue'),
+    props: true,
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/questions/item/:id',
+    name: 'questions.item',
+    component: () => import('@/pages/gift/QuestionItemPage.vue'),
+    props: true,
+    meta: { requiresAuth: true }
+  },
+  // Settings tabs
+  {
+    path: '/settings/all',
+    name: 'settings.all',
+    component: () => import('@/pages/settings/AllSettingsPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/settings/grades',
+    name: 'settings.grades',
+    component: () => import('@/pages/settings/GradeSettingsPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/settings/general',
+    name: 'settings.general',
+    component: () => import('@/pages/settings/GeneralSettingsPage.vue'),
+    meta: { requiresAuth: true, permission: 'manage-users' }
+  },
+  {
+    path: '/contacts',
+    name: 'contacts',
+    component: () => import('@/pages/ContactsPage.vue')
   },
   // Errors
   {

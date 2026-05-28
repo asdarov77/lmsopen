@@ -1,0 +1,31 @@
+uid=24_0 RootWebArea "Laravel" url="http://localhost:8000/#/files"
+  uid=24_1 banner
+    uid=24_2 button
+    uid=24_3 link "LMS - Система управления обучением" url="http://localhost:8000/#/"
+      uid=24_4 StaticText "LMS - Система управления обучением"
+    uid=24_5 button "АДМИНИСТРАТОР" expandable haspopup="menu"
+  uid=24_6 navigation
+    uid=24_7 listbox orientation="vertical"
+      uid=24_8 link "Главная" url="http://localhost:8000/#/"
+      uid=24_9 link "Курсы" url="http://localhost:8000/#/courses"
+      uid=24_10 link "Категории" url="http://localhost:8000/#/categories"
+      uid=24_11 generic
+      uid=24_12 generic
+      uid=26_0 link "Файловый менеджер" url="http://localhost:8000/#/files"
+      uid=26_1 link "Загрузить" url="http://localhost:8000/#/files/upload"
+      uid=24_13 link "Календарь" url="http://localhost:8000/#/calendar"
+      uid=24_14 generic
+      uid=24_15 generic
+      uid=24_16 generic
+      uid=24_17 link "Моё обучение" url="http://localhost:8000/#/user/learning"
+      uid=24_18 link "Контакты" url="http://localhost:8000/#/contacts"
+      uid=24_19 generic
+  uid=24_20 main
+    uid=26_2 heading "Файлы" level="1"
+    uid=26_3 button "APP.COMMON.BACK" disableable disabled
+    uid=26_4 alert atomic live="assertive" relevant="additions text"
+      uid=26_5 StaticText "files.noItems"
+  uid=24_99 contentinfo
+    uid=24_100 StaticText "© 2023 Dinamika"
+    uid=24_101 button "ENG"
+    uid=24_102 button "RUS"

@@ -1,0 +1,27 @@
+uid=27_0 RootWebArea "Laravel" url="http://localhost:8000/#/settings"
+  uid=27_1 banner
+    uid=27_2 button
+    uid=27_3 link "LMS - Система управления обучением" url="http://localhost:8000/#/"
+      uid=27_4 StaticText "LMS - Система управления обучением"
+    uid=27_5 button "АДМИНИСТРАТОР" expandable haspopup="menu"
+  uid=27_6 navigation
+    uid=27_7 listbox orientation="vertical"
+      uid=27_8 link "Главная" url="http://localhost:8000/#/"
+      uid=27_9 link "Курсы" url="http://localhost:8000/#/courses"
+      uid=27_10 link "Категории" url="http://localhost:8000/#/categories"
+      uid=27_11 generic
+      uid=27_12 generic
+      uid=27_13 link "Файловый менеджер" url="http://localhost:8000/#/files"
+      uid=27_14 link "Загрузить" url="http://localhost:8000/#/files/upload"
+      uid=27_15 link "Календарь" url="http://localhost:8000/#/calendar"
+      uid=27_16 generic
+      uid=27_17 generic
+      uid=27_18 generic
+      uid=27_19 link "Моё обучение" url="http://localhost:8000/#/user/learning"
+      uid=27_20 link "Контакты" url="http://localhost:8000/#/contacts"
+      uid=27_21 generic
+  uid=27_22 main
+  uid=27_23 contentinfo
+    uid=27_24 StaticText "© 2023 Dinamika"
+    uid=27_25 button "ENG"
+    uid=27_26 button "RUS"

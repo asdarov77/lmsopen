@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class GradeBoundary extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'boundary',
         'grade',
@@ -13,6 +18,7 @@ class GradeBoundary extends Model
 
     public static function getGrade(int $percentage): int
     {
+
         $boundaries = self::orderBy('boundary', 'desc')->get();
         
         foreach ($boundaries as $boundary) {

@@ -1,0 +1,47 @@
+uid=29_0 RootWebArea "Laravel" url="http://localhost:8000/#/settings/grade-boundaries"
+  uid=29_1 banner
+    uid=29_2 button
+    uid=29_3 link "LMS - Система управления обучением" url="http://localhost:8000/#/"
+      uid=29_4 StaticText "LMS - Система управления обучением"
+    uid=29_5 button "АДМИНИСТРАТОР" expandable haspopup="menu"
+  uid=29_6 navigation
+    uid=29_7 listbox orientation="vertical"
+      uid=29_8 link "Главная" url="http://localhost:8000/#/"
+      uid=29_9 link "Курсы" url="http://localhost:8000/#/courses"
+      uid=29_10 link "Категории" url="http://localhost:8000/#/categories"
+      uid=29_11 generic
+      uid=29_12 link "Банк вопросов" url="http://localhost:8000/#/questions-bank"
+      uid=29_13 link "Экзамен" url="http://localhost:8000/#/examine"
+      uid=29_14 generic
+      uid=29_15 link "Файловый менеджер" url="http://localhost:8000/#/files"
+      uid=29_16 link "Загрузить" url="http://localhost:8000/#/files/upload"
+      uid=29_17 link "Календарь" url="http://localhost:8000/#/calendar"
+      uid=29_18 generic
+      uid=29_19 link "Общие" url="http://localhost:8000/#/settings/general"
+      uid=29_20 link "Оценки" url="http://localhost:8000/#/settings/grades"
+      uid=29_21 link "Все настройки" url="http://localhost:8000/#/settings/all"
+      uid=29_22 generic
+      uid=29_23 link "Список" url="http://localhost:8000/#/users"
+      uid=29_24 link "Создать" url="http://localhost:8000/#/register"
+      uid=29_25 generic
+      uid=29_26 link "Список" url="http://localhost:8000/#/groups"
+      uid=29_27 link "Создать" url="http://localhost:8000/#/groups/create"
+      uid=29_28 link "Моё обучение" url="http://localhost:8000/#/user/learning"
+      uid=29_29 link "Контакты" url="http://localhost:8000/#/contacts"
+      uid=29_30 generic
+  uid=29_31 main
+    uid=29_32 heading "Границы оценок" level="1"
+    uid=29_33 StaticText "Оценка"
+    uid=29_34 StaticText "Граница (%)"
+    uid=29_35 StaticText "2"
+    uid=29_36 spinbutton value="0" valuemax="100" valuemin="0" valuetext="0"
+    uid=29_37 StaticText "3"
+    uid=29_38 spinbutton value="35" valuemax="100" valuemin="0" valuetext="35"
+    uid=29_39 StaticText "4"
+    uid=29_40 spinbutton value="65" valuemax="100" valuemin="0" valuetext="65"
+    uid=29_41 StaticText "5"
+    uid=29_42 spinbutton value="85" valuemax="100" valuemin="0" valuetext="85"
+  uid=29_43 contentinfo
+    uid=29_44 StaticText "© 2023 Dinamika"
+    uid=29_45 button "ENG"
+    uid=29_46 button "RUS"

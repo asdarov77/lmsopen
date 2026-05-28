@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('aircraft_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('aircraft_id')->constrained('aircrafts')->cascadeOnDelete();
             $table->string('title');
             $table->string('code');
             $table->text('description')->nullable();
